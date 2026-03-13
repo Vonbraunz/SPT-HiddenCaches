@@ -1,35 +1,67 @@
 # Rai's Hidden Caches
 
-An SPT Bepinex client mod that adds a flare-like smoke, light, and sound effect to all of the random hidden caches located around the map, making them easily visible.
+An SPT BepInEx client mod that adds a flare-like smoke, light, and audio effect to all hidden caches scattered around the maps, making them easily visible.
 
-This mod features some customization options, such as enabling or disabling each of the three effects, as well as letting you customize the color of the smoke and lighting effect.
+Supports **SPT 4.0.13**.
 
-This mod should be forward-compatible with all new client releases for EFT (unless something very, very significant changes) and does NOT need to be updated.
+---
 
-### How to install
+## Features
 
-1. Download the latest release here: [link](https://github.com/RaiRaiTheRaichu/HiddenCaches/releases) -OR- build from source (instructions below)
-2. Simply extract the zip file contents into your root SPT folder (where EscapeFromTarkov.exe is).
-3. Your `BepInEx/plugins` folder should now contain a `RaiRai.HiddenCaches.dll` file inside.
+- Smoke particle effect on every hidden cache
+- Point light glow
+- Looping audio
+- Fully configurable via Configuration Manager (F12 in-game):
+  - Toggle smoke, light, and audio independently
+  - Customise the colour of the smoke and light
 
-### Known issues
+---
 
-None at the moment.
+## Installation
 
-### How to build from source
+1. Download the latest release from the [Releases](../../releases) page
+2. Extract the zip into your SPT root folder (where `EscapeFromTarkov.exe` lives)
+3. Confirm `BepInEx/plugins/RaiRai.HiddenCaches.dll` is present
+4. Launch the game
 
-1. Download/clone this repository.
-2. Open your current SPT directory and copy all files required under the "Reference list" section to their respective folders.
-3. Rebuild the project in the Release configuration.
-4. Grab the `RaiRai.HiddenCaches.dll` file from the `build/plugins/` folder and use it wherever. Refer to the "How to install" section if you need help here.
+---
 
-### Reference list
+## Building from source
 
-Copy the contents of `EscapeFromTarkov_Data/Managed/` from your SPT's install location into `references/EFT/Managed/` of this repository (create the folders if they do not exist.)
+### Prerequisites
 
-Copy `ConfigurationManager.dll` into `references/BepInEx/` of this repository (create the folders if they do not exist.)
-You can get the `ConfigurationManager.dll` from your SPT's install location, in `BepInEx/Plugins/spt/`.
+- [.NET SDK](https://dotnet.microsoft.com/download) (net472)
+- A working SPT 4.0.13 install
 
-### Credits
-RaiRaiTheRaichu
-Terkoiz
+### Reference paths
+
+The project uses absolute paths pointing to an SPT install at `C:\SPT\ModTest\`. If your install is elsewhere, update the `<HintPath>` entries in `RaiRai.HiddenCaches.csproj` to match your paths.
+
+The following files are required:
+
+| File | Source location in SPT install |
+|------|-------------------------------|
+| `BepInEx.dll` | `BepInEx\core\` |
+| `0Harmony.dll` | `BepInEx\core\` |
+| `spt-reflection.dll` | `BepInEx\plugins\spt\` |
+| `Assembly-CSharp.dll` | `EscapeFromTarkov_Data\Managed\` |
+| `Comfort.dll` | `EscapeFromTarkov_Data\Managed\` |
+| `UnityEngine.dll` | `EscapeFromTarkov_Data\Managed\` |
+| `UnityEngine.AudioModule.dll` | `EscapeFromTarkov_Data\Managed\` |
+| `UnityEngine.CoreModule.dll` | `EscapeFromTarkov_Data\Managed\` |
+| `UnityEngine.IMGUIModule.dll` | `EscapeFromTarkov_Data\Managed\` |
+| `UnityEngine.ParticleSystemModule.dll` | `EscapeFromTarkov_Data\Managed\` |
+
+### Steps
+
+1. Clone the repository
+2. Update `<HintPath>` entries in `RaiRai.HiddenCaches.csproj` if your SPT install path differs
+3. Build in Release configuration
+4. Copy `build/plugins/RaiRai.HiddenCaches.dll` to `BepInEx/plugins/` in your SPT install
+
+---
+
+## Credits
+
+- **RaiRaiTheRaichu** — original mod
+- **Terkoiz** — contributions
